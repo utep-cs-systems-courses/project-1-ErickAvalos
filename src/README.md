@@ -1,5 +1,9 @@
 Project 1: Tokenizer
 ====================
+
+#### gui.c
+A simple interface that allows the user to input a string and outputs the same.
+
 # Instructions:
 
 You should document your tokenizer in this file.
