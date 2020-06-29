@@ -1,8 +1,17 @@
 Project 1: Tokenizer
 ====================
 
-#### gui.c
-A simple interface that allows the user to input a string and outputs the same.
+### main.c:
+The main program file. Contains main() function
+
+### tokenizer.c
+Implements tokenizer.h
+
+### history.c
+Implements history.h
+ 
+### Makefile
+Run the program with 'run'
 
 # Instructions:
 
