@@ -50,18 +50,15 @@ void print_history(List *list) {
 }
 
 void free_history(List *list) {
-  Item *temp = list->root;
-  while (temp) {
-    /*
-    temp = list->root;
-    list->root = list->root->next;
-    free(temp);
-    */
-    free(temp->str);
-    //free(temp->id);
-    free(temp);
-    temp = temp->next;
+  Item *p = list->root;
+  Item *temp;
+  while (p->next) {
+    temp = p->next;
+    free(p->str);
+    free(p);
+    //p = p->next;
+    p = temp;
     }
-  free(temp);
-  free(list);
+  free(p);
+  //free(list);
 }

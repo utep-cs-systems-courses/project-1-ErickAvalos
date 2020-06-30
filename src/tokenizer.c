@@ -87,7 +87,7 @@ char **tokenize(char *str) {
     str = word_terminator(str);
     i++;
   }
-  p[i] = '\0';
+  p[i] = 0;
   return p;
 }
 
@@ -105,5 +105,6 @@ void free_tokens(char **tokens) {
     free(tokens[i]);
     i++;
   }
-  free(*tokens);
+  
+  free(tokens);
 }

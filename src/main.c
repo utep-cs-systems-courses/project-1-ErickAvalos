@@ -25,9 +25,9 @@ void main(void) {
     free_tokens(tokens);
     //}
     
-    print_tokens(tokens);
+    //print_tokens(tokens);
     //printf("after free tokens\n");
-    free_history(history);
+    //free_history(history);
     print_history(history);
     
 }
