@@ -1,4 +1,3 @@
-//#ifndef _TOKENIZER_
 #define _TOKENIZER_
 #include <stdio.h>
 #include <stdlib.h>
@@ -42,12 +41,7 @@ int count_words(char *str) {
     str = word_start(str);
     str = word_terminator(str);
     count++;
-  }
-  
-  /*
-  printf("number of words %d\n", count);
-  */
-    
+  }  
   return count;
 }
 
@@ -59,24 +53,12 @@ char *copy_str(char *inStr, short len) {
     p[i] = inStr[i];
     i++;
   }
-  p[i] = '\0';
+  p[i] = 0;
   return p;
 }
 
 char **tokenize(char *str) {
-  /*
-  //begin test
-  printf("from tokenize: ");
-  printf(str);
-  //end test
-  */
-  
   int size = count_words(str);
-
-  /*
-  printf("%d", size);
-  */
-    
   char **p = (char **) malloc(sizeof(char *)*(++size));
   int i = 0;
   int difference = 0;
@@ -93,6 +75,7 @@ char **tokenize(char *str) {
 
 void print_tokens(char **tokens) {
   int i = 0;
+  //iterating through tokens
   while (*tokens) {
     printf("tokens[%d] = %s\n", i++, *tokens++);
   }
@@ -101,10 +84,9 @@ void print_tokens(char **tokens) {
 
 void free_tokens(char **tokens) {
   int i = 0;
+  //frees the array pointer
   while (tokens[i]) {
     free(tokens[i]);
     i++;
   }
-  
-  free(tokens);
 }

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "history.h"
+#include "tokenizer.h"
 
 List *init_history() {
   List *list = (List *) malloc(sizeof(List));
@@ -9,19 +10,20 @@ List *init_history() {
   return list;
 }
 
-void add_history(List *list, char *str, int i) {
+void add_history(List *list, char *str) {
   if (list->root->str == 0) {
     list->root->str = str;
-    list->root->id = i;
+    list->root->id = 0;
     list->last = list->root;
   } else {
     list->last->next = malloc(sizeof(Item));
     list->last->next->str = str;
-    list->last->next->id = i;
+    list->last->next->id = list->last->id+1;
     list->last = list->last->next;
     list->last->next = 0;
   }
 }
+
 char *get_history(List *list, int id) {
   Item *dummy = malloc(sizeof(Item));
   dummy = list->root;
@@ -40,25 +42,22 @@ char *get_history(List *list, int id) {
 }
 
 void print_history(List *list) {
-  Item *dummy = malloc(sizeof(Item));
-  dummy = list->root;
-  while (dummy != 0) {
-    printf("> at id %d: %s\n", dummy->id, dummy->str);
-    dummy = dummy->next;
+  Item *itr = list->root;
+  while (itr) {
+    printf("> at id %d: %s\n", itr->id, itr->str);
+    itr = itr->next;
   }
-  free(dummy);
+  printf("finished printing history\n");
 }
 
 void free_history(List *list) {
   Item *p = list->root;
   Item *temp;
-  while (p->next) {
+  while (temp) {
     temp = p->next;
     free(p->str);
     free(p);
-    //p = p->next;
     p = temp;
     }
-  free(p);
-  //free(list);
+  list->root = 0;
 }
