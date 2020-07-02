@@ -5,6 +5,7 @@
 
 List *init_history() {
   List *list = (List *) malloc(sizeof(List));
+  //creating space with size of Item
   list->root = malloc(sizeof(Item));
   list->last = malloc(sizeof(Item));
   return list;
@@ -16,6 +17,7 @@ void add_history(List *list, char *str) {
     list->root->id = 0;
     list->last = list->root;
   } else {
+    //creating space for a new Item
     list->last->next = malloc(sizeof(Item));
     list->last->next->str = str;
     list->last->next->id = list->last->id+1;
@@ -41,6 +43,7 @@ char *get_history(List *list, int id) {
   return "item not found";
 }
 
+//iterating through the list
 void print_history(List *list) {
   Item *itr = list->root;
   while (itr) {
@@ -53,6 +56,7 @@ void print_history(List *list) {
 void free_history(List *list) {
   Item *p = list->root;
   Item *temp;
+  //frees the first Item of the list and iterates to the next Item
   while (temp) {
     temp = p->next;
     free(p->str);

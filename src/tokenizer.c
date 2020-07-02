@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "tokenizer.h"
 
+//checking to see if char is a space
 int space_char(char c) {
   if (c == ' ' || c == '\t' || c == '\0') {
     return 1;
@@ -11,6 +12,7 @@ int space_char(char c) {
   }
 }
 
+//checking to see if char is a non-space
 int non_space_char(char c) {
   if (c == ' ' || c == '\t' || c == '\0') {
     return 0;
@@ -19,6 +21,7 @@ int non_space_char(char c) {
   }
 }
 
+//iterating until char is not a space
 char *word_start(char *str) {
   while (space_char(*str)) {
     str++;
@@ -26,6 +29,7 @@ char *word_start(char *str) {
   return str;
 }
 
+//iterating until char is a space
 char *word_terminator(char *word) {
   while (non_space_char(*word)) {
     word++;
@@ -33,6 +37,7 @@ char *word_terminator(char *word) {
   return word;
 }
 
+//counts the number of words in a sentence
 int count_words(char *str) {
   int count = 0;
   char *temp;
@@ -45,6 +50,7 @@ int count_words(char *str) {
   return count;
 }
 
+//creates a new copy of a string
 char *copy_str(char *inStr, short len) {
   int i = 0;
   char *p;
@@ -57,8 +63,10 @@ char *copy_str(char *inStr, short len) {
   return p;
 }
 
+//creates a pointer array with each index pointing to a token of a string
 char **tokenize(char *str) {
   int size = count_words(str);
+  //allocate memory
   char **p = (char **) malloc(sizeof(char *)*(++size));
   int i = 0;
   int difference = 0;
