@@ -1,5 +1,18 @@
 Project 1: Tokenizer
 ====================
+
+### main.c:
+The main program file. Contains main() function
+
+### tokenizer.c
+Implements tokenizer.h
+
+### history.c
+Implements history.h
+ 
+### Makefile
+Run the program with 'run'
+
 # Instructions:
 
 You should document your tokenizer in this file.
